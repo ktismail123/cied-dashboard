@@ -1,0 +1,45 @@
+body * {
+    padding: 0;
+    margin: 0;
+}
+
+.toast {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+
+.login {
+    min-height: 100vh;
+}
+
+.bg-image {
+    background-image: url('../../../../../assets/images/background.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+.main-container {
+    width: 88%;
+}
+
+.login-heading {
+    font-weight: 300;
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+}
+
+h1 {
+    font-family: Urbanist;
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 14px;
+}

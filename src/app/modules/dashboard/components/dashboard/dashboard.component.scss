@@ -1,0 +1,61 @@
+.card-title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.navbar {
+    background-color: #1F2228;
+}
+
+.form-rounded {
+    border-radius: 1rem;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: #35383E;
+    ;
+}
+
+.dashboard-section {
+    background: #F8FAFB;
+}
+
+.active {
+    background-color: #3454CF;
+    color: #ffff;
+}
+
+.progress {
+    border-radius: 5px;
+}
+
+.progress-bar {
+    border-radius: 5px;
+}
+
+.box-section {
+    width: 15rem;
+    height: 120px;
+    border-radius: 5px;
+    padding-left: 20px;
+    background-color: #ffff;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    color: #000000
+}
+
+.box-section:hover {
+    box-shadow: 0px 10px 20px 0px #00000026;
+    background-color: #3454CF;
+    color: #ffff;
+}
+
+.table-borderless {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    height: 50px;
+}

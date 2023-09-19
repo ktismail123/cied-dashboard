@@ -1,0 +1,44 @@
+  <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary">
+    <div class="container-fluid">
+        <img class="navbar-brand" src="../../../../assets/images/logo.svg" alt="" style="margin-right: 50px; width: 45px;">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse resp-nav" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Lead</a>
+                </li>
+            </ul>
+            <form class="d-flex ms-auto rmv-resp">
+                <input class="form-control me-2 bg-input-background text-white search_input" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" style="background: #3454CF; color: white"><span style="margin-right: 5px;">+</span>Add Leads</button>
+            </form>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 rmv-resp">
+                <li class="nav-item profile-section d-flex align-items-center">
+                    <div>
+                        <img class="profile-image" [src]="userDetails.image " alt="">
+                    </div>
+                    <div class="user_details ms-2 mt-2 text-white">
+                        <h4 class="user_name">{{userDetails ? userDetails.first_name + ' ' + userDetails.last_name : ''}}</h4>
+                        <h4 class="user_post">Lead tracker user</h4>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="setting">
+                        <img class="setting_icon" src="../../../../assets/images/settings.svg" alt="">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="logout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout" (click)="logout()">
+                        <img class="logout_icon" src="../../../../assets/images/logout.svg" alt="">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

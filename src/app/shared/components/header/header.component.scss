@@ -1,0 +1,120 @@
+$background: #1F2228;
+$input-background: #35383E;
+
+.navbar {
+    font-family: 'Urbanist', sans-serif;
+    height: 70px;
+}
+
+nav{
+    background-color: $background !important;
+}
+
+.brand_logo {
+    width: 35px;
+    height: 23.91px;
+    margin-left: 20px;
+}
+
+.navbar-toggler {
+    margin-right: 20px;
+}
+
+.nav-link {
+    font-size: 14px;
+    position: relative;
+    padding-bottom: 3px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -19px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 6px;
+    background-color: #3454CF;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.nav-link:not(.active) {
+    color: #b1b1b1;
+}
+
+.form-control {
+    width: 350px;
+    height: 30px;
+    border-radius: 27.5px;
+    outline: none;
+    background: $input-background;
+    border: none;
+    padding-left: 30px;
+    color: #ffffff;
+}
+
+.btn-outline-success {
+    width: 135px;
+    height: 32px;
+    margin-left: 20px;
+    border-radius: 27.5px;
+    font-size: 14px;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.user_name, .user_post {
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: -6px;
+}
+
+.setting, .logout {
+    margin-left: 20px;
+    background-color: $input-background;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.setting_icon, .logout_icon {
+    width: 16px;
+    height: 16px;
+    margin-top: 12px;
+    margin-left: 12px;
+}
+
+.resp-nav{
+    background: $background;
+    z-index: 1;
+}
+
+@media screen and (max-width: 1024px) {
+    .rmv-resp{
+        display: none !important;
+    }
+
+    .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: -19px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+        height: 6px;
+        background-color: $background;
+        border-radius: 10px 10px 0px 0px;
+    }
+    
+    .nav-link:not(.active) {
+        color: white;
+    }
+  
+}

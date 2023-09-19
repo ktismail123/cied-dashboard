@@ -1,0 +1,97 @@
+<div class="dashboard-section">
+  <div class="container-lg d-flex flex-column gap-4">
+    <div class="row">
+      <div class="col-12 mt-2">
+        <h2 class="">Welcome to Lead tracker!</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="bg-white rounded-pill d-flex">
+          <div class="col-4 rounded-pill text-center p-2 btn" *ngFor="let tab of stageDetails"
+            (click)="changeStageType(tab.stage_type)" [ngClass]="{'active': selectedStageType === tab.stage_type}">
+            <span>{{tab.stage_type}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-7 col-lg-4">
+        <h5>Probabilities</h5>
+        <div class="d-flex flex-column gap-2">
+          <div class="progress bg-white position-relative" style="height: 70px" *ngFor="let item of probabilities">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{'width':item.perc,'background-color': item.color}"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            </div>
+            <div class="progress-content position-absolute left-0 w-100 h-100">
+              <div class="h-100 d-flex align-items-center" style="padding: 10px;">
+                <div class="col-1">
+                  <h6>{{item.perc}}</h6>
+                </div>
+                <div class="col-9" style="margin-left: 5px;">
+                  <h6>{{item.title}}</h6>
+                </div>
+                <div class="col-2">
+                  <h6>{{item.count === '00' ? '0' : item.count}} Leads</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8">
+        <h5>Graph</h5>
+        <div class="bg-white p-2">
+          <canvas id="myChart" width="860" height="212"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between flex-wrap">
+      <div class="col-12 col-md-6 col-lg-4 box-section mb-3 d-flex align-items-center" *ngFor="let item of activeLeadsDetails">
+        <div class="p-2">
+          <h5 class="card-title font-weight-normal">{{item.name | titlecase}}</h5>
+          <h6 class="card-subtitle mb-2">{{item.lead_count}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-3 col-lg-2 d-flex align-items-center">
+        <h6>Recently active leads</h6>
+      </div>
+      <div class="col-12 col-md-3 col-lg-2">
+        <div class="input-group">
+          <input type="text" [(ngModel)]="searchText"  class="form-control rounded-pill" placeholder="Search Leads" aria-label="Search"
+            aria-describedby="basic-addon2">
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th *ngFor="let item of tableHead" scope="col">{{ item.head }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of leadsArrayList " class="table-row-gap">
+            <td>{{ item.name }}</td>
+            <td>{{ item.created_on }}</td>
+            <td>{{ item.current_stage.name }}</td>
+            <td><span class="rounded-pill p-2"  [ngStyle]="getProbabilityStyles(item.probability)">{{categorizeValue(item.probability) }}</span></td>
+            <td>{{ item.organization.team_size }}</td>
+            <td>{{ item.organization.country }}</td>
+            <td>{{ item.organization.revenue }}</td>
+            <td>{{ item.category.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="rounded-pill text-center p-2 btn btn-primary">
+        <span class="p-2">View all</span>
+      </div>
+    </div>
+  </div>
+
+</div>
