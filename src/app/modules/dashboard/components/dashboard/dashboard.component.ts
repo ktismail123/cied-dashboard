@@ -211,7 +211,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
  */
   getProbability(): void {
     this.subscripton.push(
-      this.userService.gerProbalities(this.selectedStageType).subscribe({
+      this.userService.getProbalities(this.selectedStageType).subscribe({
         next: (res => {
           this.probability_details = res.data;
           this.probabilities = this.convertToProbabilities(res.data);
