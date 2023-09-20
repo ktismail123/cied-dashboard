@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, inject, OnDestroy } from '@angular/core';
 import { Chart, TickOptions } from 'chart.js/auto';
-import { Subscription } from 'rxjs';
+import { Subscription, finalize } from 'rxjs';
 import { IActiveLeadsDataResult, ILeadsListDataResult, IProbability, IStageGraphData, IprobabilityData } from 'src/app/core/models/user.model';
 import { UserService } from 'src/app/core/services/user-services/user.service';
 import { DashboardData } from '../../data/dashboard';
@@ -48,6 +48,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   /** Search text for leads list. */
   searchText = '';
+
+  loading = false;
 
   /**
    * Initializes the component.
@@ -142,13 +144,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
    * Fetches leads list data from the UserService based on selectedStageType and updates leadsArrayList.
    */
   getLeadsList(): void {
+    this.loading = true;
     this.subscripton.push(
-      this.userService.leadsList(this.selectedStageType, 10, 0, '').subscribe({
+      this.userService.leadsList(this.selectedStageType, 10, 0, this.searchText).pipe(
+        finalize(() => { this.loading = false; })
+      ).subscribe({
         next: (res => {
           this.leadsArrayList = res.data.results;
         })
       })
     );
+  }
+
+  getSearch(event: KeyboardEvent): void {
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+      // Enter key was pressed
+      this.getLeadsList();
+    }
   }
 
   /**

@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, finalize } from 'rxjs';
 import { IFormBody, IMyForm } from 'src/app/core/models/login';
 import { AuthenticationService } from 'src/app/core/services/authentication/authentication.service';
 
@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   /** Instance of Router for navigation. */
   private router = inject(Router);
+
+  loading = false;
 
   /**
    * Initializes the component.
@@ -87,9 +89,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginForm.markAllAsTouched();
       return;
     }
-
+    this.loading = true;
     this.subscription.push(
-      this.authService.login(this.formBody()).subscribe({
+      this.authService.login(this.formBody()).pipe(
+        finalize(() => { this.loading = false; })
+      ).subscribe({
         next: (res => {
           if (res.success) {
             this.authService.saveToken(res.data.token);

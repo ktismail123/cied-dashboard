@@ -32,7 +32,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   /** Instance of UserService for managing user-related data. */
   private userService = inject(UserService);
-
+ 
+  userImgae = 'https://beforeigosolutions.com/wp-content/uploads/2021/12/dummy-profile-pic-300x300-1.png';
 
   /**
   * Initializes the component.
@@ -52,6 +53,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         next: (res => {
           if (res.success) {
             this.userDetails = res.data;
+            if(this.userDetails.image){
+              this.userImgae = this.userDetails.image;
+            }
           }
         })
       })

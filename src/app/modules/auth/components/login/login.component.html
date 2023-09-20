@@ -50,7 +50,7 @@
                   </div>
                   <div class="d-grid pt-3">
                     <button class="btn btn-lg btn-primary btn-login fw-bold mb-2" type="submit"
-                      (click)="onSubmit()">Login</button>
+                      (click)="onSubmit()">{{loading ? 'Loading...' : 'Login'}}</button>
                     <div class="text-center">
                       <p>Don’t have an account? <a class="small" href="#">Signup</a></p>
                     </div>
